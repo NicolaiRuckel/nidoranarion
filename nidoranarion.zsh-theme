@@ -34,6 +34,7 @@ fi
 setopt prompt_subst
 local NEWLINE=$'\n'
 PROMPT='%B%F{blue}%3~%B%F{green}${vcs_info_msg_0_}%b%f${NEWLINE}${user_symbol} '
+RPROMPT='%T'
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
