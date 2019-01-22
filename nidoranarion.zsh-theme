@@ -25,9 +25,9 @@ zstyle ':vcs_info:*' enable git svn
 theme_precmd () {
     # check if current branch is ahead
     if $(echo "$(git log origin/$(git_current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
-        zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{077}●%F{green}]'
+        zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{077}●%F{115}]'
     else
-        zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{green}]'
+        zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{115}]'
     fi
 
     vcs_info
@@ -42,14 +42,14 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   fi
 }
 
-user_symbol="%B%F{green}\$%b%f"
+user_symbol="%B%F{115}\$%b%f"
 if [[ $UID == 0 || $EUID == 0 ]]; then
-        user_symbol="%B%F{red}#%b%f"
+        user_symbol="%B%F{124}#%b%f"
 fi
 
 setopt prompt_subst
 local NEWLINE=$'\n'
-PROMPT='%B%F{blue}%3~%B%F{green}${vcs_info_msg_0_}%b%f${NEWLINE}${user_symbol} '
+PROMPT='%B%F{117}%3~%B%F{115}${vcs_info_msg_0_}%b%f${NEWLINE}${user_symbol} '
 RPROMPT='%T'
 
 autoload -U add-zsh-hook
