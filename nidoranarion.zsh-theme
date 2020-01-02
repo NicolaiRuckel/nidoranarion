@@ -23,7 +23,8 @@ zstyle ':vcs_info:*' enable git
 
 theme_precmd () {
     # check if current branch is ahead
-    if $(echo "$(git log origin/$(git_current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
+    if $(echo "$(git log origin/$(git_current_branch)..HEAD 2> /dev/null)" | \
+            grep '^commit' &> /dev/null); then
         zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{green}●%f%B]'
     else
         zstyle ':vcs_info:*' formats ' [%b%m%u%c%f%B]'
