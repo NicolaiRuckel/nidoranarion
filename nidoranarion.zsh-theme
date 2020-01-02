@@ -16,17 +16,17 @@
 
 autoload -Uz vcs_info
 
-zstyle ':vcs_info:*' stagedstr '%F{yellow}●%f'
-zstyle ':vcs_info:*' unstagedstr '%F{red}●%f'
+zstyle ':vcs_info:*' stagedstr '%b%F{yellow}●%f'
+zstyle ':vcs_info:*' unstagedstr '%b%F{red}●%f'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git
 
 theme_precmd () {
     # check if current branch is ahead
     if $(echo "$(git log origin/$(git_current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
-        zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{green}●%f]'
+        zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{green}●%f%B]'
     else
-        zstyle ':vcs_info:*' formats ' [%b%m%u%c%f]'
+        zstyle ':vcs_info:*' formats ' [%b%m%u%c%f%B]'
     fi
 
     vcs_info
@@ -37,7 +37,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
      git status --porcelain | grep -m 1 '^??' &>/dev/null
   then
-    hook_com[misc]='%F{blue}●%f'
+    hook_com[misc]='%b%F{blue}●%f'
   fi
 }
 
@@ -48,7 +48,7 @@ fi
 
 setopt prompt_subst
 local NEWLINE=$'\n'
-PROMPT='%B%F{blue}%3~%b%f${vcs_info_msg_0_}%b%f${NEWLINE}${user_symbol} '
+PROMPT='%B%F{blue}%3~%f${vcs_info_msg_0_}%b%f${NEWLINE}${user_symbol} '
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
