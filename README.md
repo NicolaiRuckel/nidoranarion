@@ -1,4 +1,4 @@
-# Nidoranarion Theme
+# [Nidoranarion Theme](https://github.com/NicolaiRuckel/nidoranarion)
 
 A very good theme for Oh-My-Zsh.
 It is intended for my personal use so the features can feel limited to other
