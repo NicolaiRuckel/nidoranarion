@@ -1,5 +1,5 @@
 # Nidoranarion ZSH Theme
-# Copyright (C) 2019 Nicolai Ruckel
+# Copyright (C) 2019-2023 Nicolai Ruckel
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
