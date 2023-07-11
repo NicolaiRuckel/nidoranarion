@@ -1,4 +1,4 @@
-# Nidoranarion ZSH-Theme
+# Nidoranarion ZSH Theme
 # Copyright (C) 2019 Nicolai Ruckel
 
 # This program is free software: you can redistribute it and/or modify
@@ -21,9 +21,13 @@ zstyle ':vcs_info:*' unstagedstr '%b%F{red}●%f'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git
 
+function current_git_branch() {
+    echo $(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+}
+
 theme_precmd () {
     # check if current branch is ahead
-    if $(echo "$(git log origin/$(git_current_branch)..HEAD 2> /dev/null)" | \
+    if $(echo "$(git log origin/$(current_git_branch)..HEAD 2> /dev/null)" | \
             grep '^commit' &> /dev/null); then
         zstyle ':vcs_info:*' formats ' [%b%m%u%c%F{green}●%f%B]'
     else
